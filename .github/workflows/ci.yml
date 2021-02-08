@@ -21,10 +21,10 @@ jobs:
       - name: Build
         run: |
           xcodebuild -workspace iina.xcworkspace -scheme iina CODE_SIGNING_ALLOWED=NO
-          cp /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app /IINA.app
+          cp /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app /users/runner/IINA.app
         
       - name: macOS - Uploading Artifact
         uses: actions/upload-artifact@master
         with:
           name: IINA.app
-          path: /IINA.app
+          path: /users/runner/IINA.app
