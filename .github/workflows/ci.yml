@@ -21,10 +21,10 @@ jobs:
       - name: Build
         run: |
           xcodebuild -workspace iina.xcworkspace -scheme iina CODE_SIGNING_ALLOWED=NO
-          create-dmg  /users/runner/IINA.dmg /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app
+          create-dmg --app-drop-link 600 185 /users/runner/IINA.dmg /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app
         
       - name: macOS - Uploading Artifact
         uses: actions/upload-artifact@master
         with:
-          name: IINA.app
+          name: IINA.dmg
           path: /users/runner/IINA.dmg
