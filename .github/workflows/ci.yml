@@ -16,15 +16,15 @@ jobs:
       - name: Install dependencies
         run: |
           pod install && ./other/download_libs.sh
-          npm install -g appdmg
+          brew install create-dmg
         
       - name: Build
         run: |
           xcodebuild -workspace iina.xcworkspace -scheme iina CODE_SIGNING_ALLOWED=NO
-          cp /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app /users/runner/IINA.app
+          create-dmg  /users/runner/IINA.dmg /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app
         
       - name: macOS - Uploading Artifact
         uses: actions/upload-artifact@master
         with:
           name: IINA.app
-          path: /users/runner/IINA.app
+          path: /users/runner/IINA.dmg
