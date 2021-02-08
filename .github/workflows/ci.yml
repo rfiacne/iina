@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: iina.app
-          path: /Users/runner/Library/Developer/Xcode/DerivedData/iina-csbkugdtxazzqogjnydbothqrvib/Build/Products/Debug/IINA.app
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app
