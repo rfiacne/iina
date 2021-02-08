@@ -14,13 +14,17 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: pod install && ./other/download_libs.sh
+        run: |
+          pod install && ./other/download_libs.sh
+          npm install -g appdmg
         
       - name: Build
-        run: xcodebuild -workspace iina.xcworkspace -scheme iina CODE_SIGNING_ALLOWED=NO
+        run: |
+          xcodebuild -workspace iina.xcworkspace -scheme iina CODE_SIGNING_ALLOWED=NO
+          mv /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app /IINA.app
         
       - name: macOS - Uploading Artifact
         uses: actions/upload-artifact@master
         with:
-          name: iina.app
-          path: /Users/runner/Library/Developer/Xcode/DerivedData/iina*/Build/Products/Debug/IINA.app
+          name: IINA.app
+          path: /IINA.app
